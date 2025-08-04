@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  flask-service:
+    build:
+      context: ./flask
+    container_name: flask-app
+    expose:
+      - "80"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongo-db
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - flask-service
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
