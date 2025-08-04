@@ -2,11 +2,15 @@ version: '3.8'
 
 services:
   flask-service:
+    # docker file kahan hai
     build:
       context: ./flask
+    # container ka naam
     container_name: flask-app
+    # kaunse port se app chalega
     expose:
       - "80"
+    # local code ko container ke code se mount kare jisse sirf up karne se updated code run karega
     volumes:
       - ./flask:/app
     depends_on:
