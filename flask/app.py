@@ -26,7 +26,7 @@ if collection.count_documents({}) == 0:
 # Home route - basic endpoint jo app chal raha hai yeh confirm karta hai ya health check bhi keh sakte ho
 @app.route('/')
 def home():
-    return jsonify({"message":"👋 Hello from Flask running inside Docker with MongoDB"})
+    return jsonify({"message":"Hello from Flask running inside Docker with MongoDB"})
 
 # GET request ke liye endpoint - saari data fetch karta hai collection se
 @app.route('/data', methods=['GET'])
