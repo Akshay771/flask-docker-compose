@@ -48,5 +48,16 @@ def add_data():
     collection.insert_one({"name": data["name"], "age": data["age"]})
     return jsonify({"message": "Data inserted successfully"}), 201
 
+# testing ke liye volume use karke bina image ya compose "build" ke sirf "up" command se changes dikhege
+#http://localhost/v1
+@app.route('/v1')
+def testV1():
+    return jsonify({"message":"testing V1 Route"})
+
+#http://localhost/v2
+@app.route('/v2')
+def testV2():
+    return jsonify({"message":"testing V2 Route"})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
